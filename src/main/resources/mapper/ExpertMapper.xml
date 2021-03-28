@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.csu.mywork1.persistence.ExpertMapper">
+    <select id="getExpertList" parameterType="string" resultType="Expert">
+        select
+            name,gender,company,title,areas
+        from expert
+    </select>
+    <select id="getExpertByName" parameterType="string" resultType="Expert">
+        SELECT name,gender,company,title,areas,email,telephone,picture,workExperience,achievement,
+               COUNT(CASE WHEN lecture.state='已执行' and lecture.expertName=expert.name then 1 end) as yesCount,
+               COUNT(CASE WHEN lecture.state='未执行' and lecture.expertName=expert.name then 1 end) as noCount
+        FROM expert,lecture
+        WHERE expert.name=lecture.expertName and expert.name=#{name}
+    </select>
+    <select id="searchExpertList" parameterType="string" resultType="Expert">
+        select
+            name,gender,company,title,areas
+        from expert
+        where lower(name) like #{value}
+    </select>
+    <insert id="addExpert" parameterType="Expert">
+        INSERT INTO expert
+            (name,gender,email,company,title,telephone,picture,areas,workExperience,achievement)
+        VALUES
+            (#{name},#{gender},#{email},#{company},#{title},#{telephone},'../images/dijia1.jpg',#{areas},#{workExperience},#{achievement})
+    </insert>
+    <update id="updateExpert" parameterType="Expert">
+        update expert
+        set gender=#{gender},email=#{email},company=#{company},title=#{title},telephone=#{telephone}
+          ,picture='../images/dijia1.jpg',areas=#{areas},workExperience=#{workExperience},achievement=#{achievement}
+        where name=#{name}
+    </update>
+    <delete id="deleteExpert">
+        delete from expert
+        where name=#{name}
+    </delete>
+</mapper>

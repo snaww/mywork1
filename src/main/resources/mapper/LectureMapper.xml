@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.csu.mywork1.persistence.LectureMapper">
+    <select id="getLectureList" parameterType="string" resultType="Lecture">
+        SELECT *
+--             theme,expertName,state
+        from lecture
+    </select>
+    <select id="searchLectureList" parameterType="string" resultType="Lecture">
+        select *
+--             theme,expertName,state
+        from lecture
+        where lower(theme) like #{value}
+    </select>
+    <select id="getLectureByTheme" parameterType="string" resultType="Lecture">
+        select *
+--                theme,expertName,time,place,introduction
+        from lecture
+        where theme=#{theme}
+    </select>
+    <select id="YesCount" parameterType="string" resultType="int">
+        select
+            count(case when state='已执行' then 1 end) as yesCount
+        from lecture
+    </select>
+    <select id="NoCount" parameterType="string" resultType="int">
+        select
+            count(case when state='未执行' then 1 end) as noCount
+        from lecture
+    </select>
+    <delete id="deleteLecture">
+        delete from lecture
+            where theme=#{theme}
+    </delete>
+    <insert id="addLecture" parameterType="Lecture">
+        INSERT INTO lecture
+            (theme,time,place,expertName,introduction,state)
+        VALUES
+            (#{theme},#{time},#{place},#{expertName},#{introduction},'no')
+    </insert>
+    <update id="updateLecture" parameterType="Lecture">
+        update lecture set
+            time=#{time},place=#{place},expertName=#{expertName},introduction=#{introduction},executor=#{executor}
+            where theme=#{theme}
+    </update>
+</mapper>
+

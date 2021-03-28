@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>讲座计划</title>
+</head>
+<body onload="onload()">
+<div class="layui-layout layui-layout-admin">
+    <div th:replace="common/mFrame"><!--这个地方是替换为common里的top界面--></div>
+    <div class="layui-body">
+        <div style="padding: 15px;" id="sidebar">
+            <span>
+                <a href="/manager/viewLectureList">讲座计划</a>
+            </span>
+        </div>
+        <div id="searchLecture" style="position: absolute;right: 20px;">
+            <form action="/manager/searchLecture" method="post">
+                <input type="text" id="keyword" name="keyword" size="10" required="required">
+                <!--                <script></script>这个地方后续实现相应的js效果-->
+                <input type="submit" name="searchExpert" value="检索">
+            </form>
+        </div>
+        <div id="tabel" style="margin-left: 30px;font-family: 隶书;font-size: 18px;">
+            <label>总讲座场数：<label th:text="${yesCount+noCount}">总场数</label></label>
+            <label>已执行：<b><label th:text="${yesCount}" style="color: forestgreen">已执行的场数</label></b></label>
+            <label>待执行：<b><label th:text="${noCount}" style="color: crimson;">待执行场数</label></b></label>
+            &emsp;&emsp;
+            <button><a href="/manager/addLectureForm">新增讲座计划</a></button>
+            <table class="layui-table" style="font-family: 隶书;font-size: 23px;" id="demo">
+                <colgroup>
+                    <col width="200">
+                    <col width="100">
+                    <col width="90">
+                    <col width="150">
+                    <col width="60">
+                </colgroup>
+                <thead>
+                    <tr>
+                        <td>讲座主题</td>
+                        <td>拟请专家</td>
+                        <td>执行情况</td>
+                        <td>其他</td>
+                        <td>执行人员</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="lecture:${lectureList}">
+                        <td th:text="${lecture.theme}"></td>
+                        <td th:text="${lecture.expertName}"></td>
+                        <td th:text="${lecture.state}" style="color: white"></td>
+                        <td>
+                            <a th:href="'/manager/updateLectureForm?theme='+${lecture.theme}">修改</a>
+    <!--                        <a th:href="@{/manager/updateLectureForm?theme=}+${lecture.theme}">修改</a>-->
+                            <a th:href="'/manager/deleteLecture?theme='+${lecture.theme}">删除</a>
+    <!--                        <a th:href="@{/manager/deleteLecture?theme=}+${lecture.theme}">删除</a>-->
+                        </td>
+                        <td th:text="${lecture.executor}"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <script type="text/javascript">
+                function onload(){
+                    //下面这个是准备整动态的下拉选择框，暂时没有成功
+                    // $.post("<%=path%>/manager/type",{},function (data){
+                    //     var res = $.parseJSON(data);
+                    //     $("#sel_menu").html("<option>选择分配的执行人员</option>");
+                    //     $.each(res,function (i,n){
+                    //         $("sel_menu").append("<option value="+n.genre+">"+n.genre+"</option>");
+                    //     });
+                    // })
+                    var key="未执行";
+                    var table = document.getElementById("demo");
+                    var rowObj = null;
+                    var cellObj = null;
+                    //引用rows
+                    for (var i = 1;i<table.rows.length;i++){
+                        rowObj = table.rows[i];
+                        var s =rowObj.cells[2].innerText;
+                        if(s==key){
+                            rowObj.cells[2].style.backgroundColor="crimson";
+                        }else {
+                            rowObj.cells[2].style.backgroundColor="forestgreen";//这个是变表格的颜色
+                            //rowObj.cells[2].style.color="green";//这个是变字体的颜色
+                        }
+                    }
+                }
+            </script>
+        </div>
+    </div>
+</div>
+</body>
+</html>

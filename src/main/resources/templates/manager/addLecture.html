@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>增加讲座</title>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div th:replace="common/mFrame"></div>
+    <div class="layui-body">
+        <div style="padding: 15px;" id="sidebar">
+            <span>
+                <a href="/manager/viewLectureList">讲座计划</a> /
+                <a><cite>增加讲座计划</cite></a>
+            </span>
+        </div>
+        <div id="content" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);">
+            <form action="/manager/addLecture" method="post" style="font-family: 隶书;font-size: 20px;">
+                <table>
+                    <tr>
+                        <td>讲座主题：</td>
+                        <td>
+                            <input type="text" name="theme" style="height:27px;width: auto;border-radius: 6px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>讲座时间：</td>
+                        <td>
+                            <input type="text" name="time" style="height:27px;width: auto;border-radius: 6px">
+                            <!--这个在后续还可以优化，因为这个时间要改成可以选择的而不是自己填的，自己填的可能会有格式错误，导致无法插入到数据库中-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>讲座地点：</td>
+                        <td>
+                            <input type="text" name="place" style="height:27px;width: auto;border-radius: 6px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>拟请专家：</td>
+                        <td>
+                            <input type="text" name="expertName" style="height:27px;width: auto;border-radius: 6px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>讲座简介：</td>
+                        <td>
+                            <input type="text" name="introduction" style="height:27px;width: auto;border-radius: 6px">
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit" name="addLecture" style="position: absolute;margin-top:20px;left: 50%;transform: translate(-50%);background-color: #009688;color: white; font-family: 隶书;font-size: 20px;height:30px;width: 60px;border-radius: 6px;">保存</button>
+<!--                <input type="submit" name="addLecture" value="保存">-->
+                <label th:text="${msg}">提示修改的信息，比如修改成功，修改失败等</label>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

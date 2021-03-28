@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>专家资料</title>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div th:replace="common/pFrame"><!--这个地方是替换为common里的top界面--></div>
+    <div class="layui-body">
+        <div style="padding: 15px;" id="sidebar">
+            <span>
+                <a href="/personnel/viewExpertList">专家资料</a>
+                <a><cite>详情页</cite></a>
+            </span>
+        </div>
+        <div id="expertInf">
+            <div id="picture">
+                <img th:src="${expert.picture}">
+            </div>
+            <p>姓名</p>
+            <label th:text="${expert.name}"></label>
+            <p>性别</p>
+            <label th:text="${expert.gender}"></label>
+            <p>Email</p>
+            <label th:text="${expert.email}"></label>
+            <p>单位</p>
+            <label th:text="${expert.company}"></label>
+            <p>职位</p>
+            <label th:text="${expert.title}"></label>
+            <p>电话</p>
+            <label th:text="${expert.telephone}"></label>
+            <p>已主讲讲座次数：<label th:text="${expert.yesCount}">xxx</label> <a href="#">详情</a></p>
+            <p>待主讲讲座次数：<label th:text="${expert.noCount}">xxx</label> <a href="#">详情</a></p>
+            <!--上面这个详情可以链接一个在该界面之上悬浮一个界面，不用新切换到另一个界面，后续完成-->
+            <label>擅长领域：</label>
+            <p th:text="${expert.areas}">擅长领域的文字</p>
+            <label>工作经历</label>
+            <p th:text="${expert.workExperience}">工作经历的内容</p>
+            <label>个人成就：</label>
+            <p th:text="${expert.achievement}">个人成就的内容</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

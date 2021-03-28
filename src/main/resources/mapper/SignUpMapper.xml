@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.csu.mywork1.persistence.SignUpMapper">
+    <insert id="addSignUp">
+        INSERT INTO signUp
+            (signUpTheme,signUpName,signUpTelephone)
+        VALUES
+            (#{signUpTheme},#{signUpName},#{signUpTelephone})
+    </insert>
+</mapper>

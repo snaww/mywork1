@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">>
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+<!--    这个界面本来是想作为报名讲座的界面的-->
+</head>
+<body>
+    <div style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);">
+        <form action="/manager/signUpTheme">
+            <form action="/manager/viewLecture">
+                <label>讲座主题</label>
+                <select id="select" name="theme">
+                    <option value="">选择报名的讲座主题</option>
+                    <option value="如何让消费者记住我的产品">如何让消费者记住我的产品</option>
+                    <option value="金钱的管理">金钱的管理</option>
+                    <option value="突破人才经营瓶颈">突破人才经营瓶颈</option>
+                    <option value="如何构建卓越的客户服务体系">如何构建卓越的客户服务体系</option>
+                    <option value="从零开始打造一个微商品牌">从零开始打造一个微商品牌</option>
+                    <option value="忠诚客户养成攻略">忠诚客户养成攻略</option>
+                    <option value="你不懂的微信赚钱秘籍">你不懂的微信赚钱秘籍</option>
+                    <option value="如何z">如何z</option>
+                </select>
+                <input type="submit" value="了解一下">
+            </form>
+            <label>您的姓名</label>
+            <input name="signUpName">
+            <label>您的联系方式</label>
+            <input type="tel" name="signUpTelephone">
+            <input value="立即报名">
+        </form>
+    </div>
+</body>
+</html>

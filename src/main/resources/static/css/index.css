@@ -1,0 +1,5 @@
+body{
+    background-image: url("../images/indexBg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;/*背景图片铺满整个屏幕*/
+}

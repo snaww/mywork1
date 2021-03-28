@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>修改讲座</title>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div th:replace="common/mFrame"><!--这个地方是替换为common里的top界面--></div>
+    <div class="layui-body">
+        <div style="padding: 15px;" id="sidebar">
+            <span>
+                <a href="/manager/viewLectureList">讲座计划</a> /
+                <a><cite>修改讲座计划</cite></a>
+            </span>
+        </div>
+        <div id="content" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);">
+            <form action="/manager/updateLecture" method="post" style="font-family: 隶书;font-size: 20px;">
+                <table>
+                    <tr>
+                        <td>讲座主题：</td>
+                        <td>
+                            <!--                            <input type="text" name="oldTheme" th:field="${lecture.theme}" style="display: none">-->
+                            <input type="text" name="theme" th:field="${lecture.theme}" readonly="readonly" style="height:27px;width: auto;border-radius: 6px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>讲座时间：</td>
+                        <td>
+                            <input type="text" name="time" th:field="${lecture.time}" style="height:27px;width: auto;border-radius: 6px">
+                            <!--这个在后续还可以优化，因为这个时间要改成可以选择的而不是自己填的，自己填的可能会有格式错误，导致无法插入到数据库中-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>讲座地点：</td>
+                        <td>
+                            <input type="text" name="place" th:field="${lecture.place}" style="height:27px;width: auto;border-radius: 6px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>拟请专家：</td>
+                        <td>
+                            <input type="text" name="expertName" th:field="${lecture.expertName}" style="height:27px;width: auto;border-radius: 6px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>讲座简介：</td>
+                        <td>
+                            <input type="text" name="introduction" th:field="${lecture.introduction}" style="height:27px;width: auto;border-radius: 6px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>执行人员</td>
+                        <td>
+                            <select name="executor" lay-verify="">
+                                <option value="无">请选择执行人员</option>
+                                <option value="p1">p1</option>
+                                <option value="p2">p2</option>
+                                <option value="p3">p3</option>
+                                <option value="p4">p4</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+                <button type="submit" name="updateLecture" style="position: absolute;margin-top:20px;left: 50%;transform: translate(-50%);background-color: #009688;color: white; font-family: 隶书;font-size: 20px;height:30px;width: 60px;border-radius: 6px;">保存</button>
+<!--                <input type="submit" name="updateLecture" value="保存">-->
+                <!--                <a href="/manager/updateLecture">保存</a>-->
+                <label th:text="${msg}">提示修改的信息，比如修改成功，修改失败等</label>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

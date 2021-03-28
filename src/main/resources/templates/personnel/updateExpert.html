@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>更新专家资料</title>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div th:replace="common/pFrame"><!--这个地方是替换为common里的top界面--></div>
+    <div class="layui-body">
+        <div style="padding: 15px;" id="sidebar">
+            <span>
+                <a href="/personnel/viewExpertList">专家资料</a> /
+                <a><cite>更新</cite></a>
+            </span>
+        </div>
+        <div id="expertInf" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);">
+            <form action="/personnel/updateExpert" method="post" style="font-family: 隶书;font-size: 16px;">
+                <img th:src="${expert.picture}" style="height: 100px;width: auto;">
+                <a class="button" href="#" style="">更换图片</a>
+                <br>
+                <label>姓&emsp;&emsp;名</label>
+                <input type="text" name="name" th:field="${expert.name}" required="required">
+                <br>
+                <label>性&emsp;&emsp;别</label>
+                <input type="text" name="gender" th:field="${expert.gender}" required="required">
+                <br>
+                <label>Email&emsp;&nbsp;</label>
+                <input type="text" name="email" th:field="${expert.email}" required="required">
+                <br>
+                <label>单&emsp;&emsp;位</label>
+                <input type="text" name="company" th:field="${expert.company}" required="required">
+                <br>
+                <label>职&emsp;&emsp;位</label>
+                <input type="text" name="title" th:field="${expert.title}" required="required">
+                <br>
+                <label>电&emsp;&emsp;话</label>
+                <input type="text" name="telephone" th:field="${expert.telephone}" required="required">
+                <br>
+                <p>已主讲讲座次数：<label th:text="${expert.yesCount}">xxx</label> <a href="#">详情</a></p>
+                <p>待主讲讲座次数：<label th:text="${expert.noCount}">xxx</label> <a href="#">详情</a></p>
+                <!--上面这个详情可以链接一个在该界面之上悬浮一个界面，不用新切换到另一个界面，后续完成-->
+                <label>擅长领域</label>
+                <input type="text" name="areas" th:field="${expert.areas}" required="required">
+                <br>
+                <label>工作经历</label>
+                <input type="text" name="workExperience" th:field="${expert.workExperience}" required="required">
+                <br>
+                <label>个人成就</label>
+                <input type="text" name="achievement" th:field="${expert.achievement}" required="required">
+                <br>
+                <button type="submit" name="updateExpert" style="position: absolute;margin-top:20px;left: 50%;transform: translate(-50%);background-color: #009688;color: white; font-family: 隶书;font-size: 20px;height:30px;width: 60px;border-radius: 6px;">保存</button>
+
+<!--                <input name="updateExpert" type="submit" value="保存">-->
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

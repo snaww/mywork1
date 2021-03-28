@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>viewLecture</title>
+</head>
+<body>
+<div>
+    <label>讲座主题</label>
+    <label th:text="${lecture.theme}"></label>
+    <label>主讲人</label>
+    <label th:text="${lecture.expertName}"></label>
+    <label>主讲时间</label>
+    <label th:text="${lecture.time}"></label>
+    <label>内容概括</label>
+    <label th:text="${lecture.introduction}"></label>
+    <label>主讲地点</label>
+    <label th:text="${lecture.place}"></label>
+</div>
+</body>
+</html>

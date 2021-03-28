@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>专家详情</title>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div th:replace="common/mFrame"><!--这个地方是替换为common里的top界面--></div>
+<!--    下面这个div是页面头部的那一栏-->
+<!--    <div class="layui-layout layui-layout-admin">-->
+<!--        <div class="layui-header">-->
+<!--            <div class="layui-logo">-->
+<!--                优马神州讲座管理系统-->
+<!--            </div>-->
+<!--            <ul class="layui-nav layui-layout-right">-->
+<!--                <li class="layui-nav-item">-->
+<!--                    <a href="javascript:;">-->
+<!--&lt;!&ndash;                        <img th:src="${account.picture}">&ndash;&gt;-->
+<!--                        <img src="../images/default.jpg" class="layui-nav-img">-->
+<!--                        用户名-->
+<!--                        &lt;!&ndash;                            <label th:text="${account.username}" id="username"></label>&ndash;&gt;-->
+<!--                    </a>-->
+<!--                </li>-->
+<!--                <li class="layui-nav-item">-->
+<!--                    <a href="/account/enter">退出登录</a></i></a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+
+    <div class="layui-body">
+        <div style="padding: 15px;" id="sidebar">
+            <span>
+                <a href="/manager/viewExpertList">专家名单</a>/
+                <a><cite>详情页</cite></a>
+            </span>
+        </div>
+        <div id="expertInf" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);font-family: 隶书;font-size: 20px;">
+            <img th:src="${expert.picture}" style="height: 100px;width: auto;">
+            <label>姓名</label>
+            <label th:text="${expert.name}"></label>
+            <br>
+            <label>性别</label>
+            <label th:text="${expert.gender}"></label>
+            <br>
+            <label>Email</label>
+            <label th:text="${expert.email}"></label>
+            <br>
+            <label>单位</label>
+            <label th:text="${expert.company}"></label>
+            <br>
+            <label>职位</label>
+            <label th:text="${expert.title}"></label>
+            <br>
+            <label>电话</label>
+            <label th:text="${expert.telephone}"></label>
+            <br>
+            <label>已主讲讲座次数：<label th:text="${expert.yesCount}">xxx</label> <a href="#">详情</a></label>
+            <br>
+            <label>待主讲讲座次数：<label th:text="${expert.noCount}">xxx</label> <a href="#">详情</a></label>
+            <br>
+            <label>擅长领域：</label>
+            <label th:text="${expert.areas}">擅长领域的文字</label>
+            <br>
+            <label>工作经历:</label>
+            <label th:text="${expert.workExperience}">工作经历的内容</label>
+            <br>
+            <label>个人成就：</label>
+            <label th:text="${expert.achievement}">个人成就的内容</label>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

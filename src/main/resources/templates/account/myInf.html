@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>个人信息</title>
+</head>
+<body>
+<!--这个页面是当点击头像时的弹窗-->
+    <a type="button" href="#">修改</a>
+    <div id="content">
+        <form action="/account/updateMyPicture" method="post" enctype="multipart/form-data">
+            <input th:text="${session.account.username}" value="username" readonly="readonly">账号</input>
+            <img th:src="${session.account.picture}">
+            <label>修改</label>
+            <input type="file" name="file"/>
+            <input type="submit" value="上传">
+        </form>
+        <label th:text="${session.account.email}">email</label>
+        <label th:text="${session.account.telephone}">电话</label>
+    </div>
+</body>
+</html>

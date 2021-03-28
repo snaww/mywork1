@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>增加专家</title>
+</head>
+<body>
+<div class="layui-layout layui-layout-admin">
+    <div th:replace="common/pFrame"><!--这个地方是替换为common里的top界面--></div>
+    <div class="layui-body">
+        <div style="padding: 15px;" id="sidebar">
+            <span>
+                <a href="/personnel/viewExpertList">专家资料</a>
+                <a><cite>新增</cite></a>
+            </span>
+        </div>
+        <form action="/personnel/addExpert" method="post">
+            <div id="expertInf">
+                <div id="picture">
+                    <input th:text="" readonly="readonly">
+                </div>
+                <p>姓名</p>
+                <input type="text" name="name" required="required">
+                <p>性别</p>
+                <input type="text" name="gender" required="required">
+                <p>Email</p>
+                <input type="text" name="email" required="required">
+                <p>单位</p>
+                <input type="text" name="company" required="required">
+                <p>职位</p>
+                <input type="text" name="title" required="required">
+                <p>电话</p>
+                <input type="text" name="telephone" required="required">
+        <!--        下面这两个我注释掉因为我觉得我要是新增一个专家，那应该之前并没有他的讲座信息，所以也就不存在相应的次数-->
+        <!--        当然还有一种可能就是之前误删了这个专家，现在又重新增加这个专家的资料，那在这两个框后面新增一个更新按钮，用于查询次数-->
+        <!--        <p>已主讲讲座次数：<label th:text="${expert.yesCount}">xxx</label> <a href="#">详情</a></p>-->
+        <!--        <p>待主讲讲座次数：<label th:text="${expert.noCount}">xxx</label> <a href="#">详情</a></p>-->
+                <!--上面这个详情可以链接一个在该界面之上悬浮一个界面，不用新切换到另一个界面，后续完成-->
+                <label>擅长领域：</label>
+                <input type="text" name="areas" required="required">
+                <label>工作经历</label>
+                <input type="text" name="workExperience" required="required">
+                <label>个人成就：</label>
+                <input type="text" name="achievement" required="required">
+                <input value="保存" type="submit">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

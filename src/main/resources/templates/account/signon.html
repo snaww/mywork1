@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>登录界面</title>
+    <link href="/css/common.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<!--防QQ邮箱登录界面-->
+<div id="signOn">
+    <div id="bangs">
+        <!--上面的条状带-->
+        <p>123456</p>
+    </div>
+    <div id="leftPicture">
+        <!--                    左边放一个图片，和右边的登录界面相同大小-->
+
+    </div>
+    <form action="/account/signon" method="post">
+        <div>
+            <!--右边放登录界面，上面是一个头像框，下面是账号框和密码框，可选择记住密码和找回密码，正下方登录按钮，右下角可以放注册账号-->
+            <!--关于头像的实现原理，可以在每次成功登录时保留账号对应的头像到本地，然后在之后的登录时根据账号在本地查找，如果没有就显示默认头像-->
+            <!--不过也有复杂的操作，可以在网上查找资料-->
+        </div>
+    </form>
+</div>
+
+
+<!--    <div id="signOn" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);">-->
+<!--        <form action="/account/signon" method="post" style="font-family: 隶书;font-size: 30px;">-->
+<!--            &lt;!&ndash;这个地方还可以添加一个头像框用于显示头像，当下面的用户名输入之后从数据库中查询图片地址进行显示&ndash;&gt;-->
+<!--            <label>用户名</label>-->
+<!--            <input type="text" name="username" style="height:27px;width: auto;border-radius: 6px">-->
+<!--            <br>-->
+<!--            <label>密&emsp;码</label>-->
+<!--            <input type="password" name="password" style="height:27px;width: auto;border-radius: 6px">-->
+<!--&lt;!&ndash;            下面这个是验证码的操作，后面看时间是否添加&ndash;&gt;-->
+<!--&lt;!&ndash;            VerificationCode:<input type="text" name="vrifyCode"/>&ndash;&gt;-->
+<!--&lt;!&ndash;            <img alt="验证码" onclick="this.src='/Code/get?d='+new Date()*1" src="/Code/get">&ndash;&gt;-->
+<!--&lt;!&ndash;            </br>&ndash;&gt;-->
+<!--&lt;!&ndash;            <p th:if="${msg != null}" th:text="${msg}"></p>&ndash;&gt;-->
+<!--            <br>-->
+<!--            <button type="submit" style="background-color: #009688;color: white; font-family: 隶书;font-size: 20px;height:30px;width: 60px;border-radius: 6px">登录</button>-->
+<!--            &emsp;&emsp;&emsp;&emsp;-->
+<!--            <a href="/account/newAccountForm">注册</a>-->
+<!--            <p th:if="${wrongMsg != null}" th:text="${wrongMsg}"></p>-->
+<!--        </form>-->
+<!--    </div>-->
+</body>
+</html>

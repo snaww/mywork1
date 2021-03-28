@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注册</title>
+</head>
+<body>
+<div style="padding: 10px;">
+    <button class="layui-btn"><a href="/account/enter">返回登录</a></button>
+</div>
+    <div id="" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);">
+        <form action="/account/newAccount" method="post" style="font-family: 隶书;font-size: 26px;">
+            <!--还可以增加一个添加头像的功能-->
+            <label>用&nbsp;户&nbsp;名：</label>
+            <input type="text" name="username" id="username" placeholder="用户名" autocomplete="new-password" required="required" style="height:23px;width: auto;border-radius: 6px">
+            <label th:if="${usernameMsg != null}" th:text="${usernameMsg}"></label>
+            <br>
+            <input type="radio" name="role" value="manager" checked="checked">经理
+            <!--上面checked作用是当加载这个页面时会默认选择这个框-->
+            <input type="radio" name="role" value="personnel">工作人员
+            <br>
+            <label>密&emsp;&emsp;码：</label>
+            <input type="password" name="password" placeholder="密码" autocomplete="new-password" required="required" style="height:23px;width: auto;border-radius: 6px">
+            <br>
+            <label>再次输入：</label>
+            <input type="password" name="repeatPassword" placeholder="再次输入密码" required="required" oninvalid="setCustomValidity('请再次输入密码')" style="height:23px;width: auto;border-radius: 6px">
+            <label th:if="${repeatPwdMsg != null}" th:text="${repeatPwdMsg}"></label>
+            <br>
+            <label>Email&emsp;&nbsp;:&nbsp;</label>
+            <input type="email" name="email" placeholder="email" required="required" style="height:23px;width: auto;border-radius: 6px">
+            <br>
+            <label>电&emsp;&emsp;话：</label>
+            <input type="tel" name="telephone" placeholder="电话" style="height:23px;width: auto;border-radius: 6px">
+            <br>
+<!--            <table>-->
+<!--                <tr>-->
+<!--                    <td>用户名：</td>-->
+<!--                    <td>-->
+<!--&lt;!&ndash;                        <input type="text" name="username" id="username" placeholder="用户名" autocomplete="new-password" required="required">&ndash;&gt;-->
+<!--                        &lt;!&ndash; 上面name属性是和数据库的值相关，id是为了判断是否存在，placeholder是输入框的提示，autocomplete是为了不让其自动填入&ndash;&gt;-->
+<!--&lt;!&ndash;                        <div id="usernameMsg"></div>&ndash;&gt;-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <p th:if="${usernameMsg != null}" th:text="${usernameMsg}"></p>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>-->
+<!--                        <input type="radio" name="role" value="manager" checked="checked">经理-->
+<!--                        &lt;!&ndash;上面checked作用是当加载这个页面时会默认选择这个框&ndash;&gt;-->
+<!--                        <input type="radio" name="role" value="personnel">工作人员-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>密码</td>-->
+<!--                    <td>-->
+<!--                        <input type="password" name="password" placeholder="密码" autocomplete="new-password" required="required">-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>再次输入密码</td>-->
+<!--                    <td>-->
+<!--                        <input type="password" name="repeatPassword" placeholder="再次输入密码" required="required" oninvalid="setCustomValidity('请再次输入密码')">-->
+<!--                        &lt;!&ndash;required作用是这必须输入&ndash;&gt;-->
+<!--                    </td>-->
+<!--                    <td>-->
+<!--                        <p th:if="${repeatPwdMsg != null}" th:text="${repeatPwdMsg}"></p>-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>Email:</td>-->
+<!--                    <td>-->
+<!--                        <input type="email" name="email" placeholder="email" required="required">-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--                <tr>-->
+<!--                    <td>电话</td>-->
+<!--                    <td>-->
+<!--                        <input type="tel" name="telephone" placeholder="电话">-->
+<!--                    </td>-->
+<!--                </tr>-->
+<!--&lt;!&ndash;                下面这个是用于显示两次密码的输入是否一致&ndash;&gt;-->
+<!--&lt;!&ndash;                <tr >&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td th:text="${msg}"></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <td></td>&ndash;&gt;-->
+<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+<!--            </table>-->
+            <br>
+            <div style="text-align: center">
+                <input type="submit" name="NewAccount"  value="提交" style="font-family: 隶书;font-size: 24px;height:30px;width: 60px;border-radius: 6px">
+            </div>
+            <p th:if="${successNewMsg != null}" th:text="${successNewMsg}"></p><!--用来提示注册成功的信息信息-->
+        </form>
+    </div>
+</body>
+</html>

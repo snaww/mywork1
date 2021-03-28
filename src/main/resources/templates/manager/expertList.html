@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>专家名单</title>
+    <link rel="stylesheet" href="/css/layui.css" media="all">
+    <link rel="stylesheet" href="/css/popup.css" media="all">
+    <link rel="stylesheet" href="/css/common.css">
+</head>
+<body>
+    <div class="layui-layout layui-layout-admin" style="font-family: 新宋体;">
+        <div th:replace="common/mFrame"></div>
+
+        <div class="layui-body">
+            <div style="padding: 15px;" id="sidebar">
+                <span>
+                    <a href="/manager/viewExpertList">专家名单</a>
+                </span>
+            </div>
+            <div id="search" style="position: absolute;right: 20px;">
+                <!--这部分是搜索框的实现-->
+                <form action="/manager/searchExpert" method="post">
+                    <input type="text" id="keyword" name="keyword" size="10" required="required"><!--不能不输入就搜索-->
+                    <!--                <script></script>这个地方后续实现相应的js效果-->
+                    <input type="submit" name="searchExpert" value="搜索">
+                </form>
+            </div>
+
+<!--            下面这个是弄分页的，但是暂时还没有弄成-->
+<!--            <table class="layui-hide" id="test">-->
+<!--&lt;!&ndash;                <tr th:each="expert:${expertList}">&ndash;&gt;-->
+<!--&lt;!&ndash;                </tr>&ndash;&gt;-->
+<!--            </table>-->
+<!--            <script>-->
+<!--                layui.use(['table','form'],function (){-->
+<!--                    var table = layui.table;-->
+<!--                    var form = layui.form;-->
+<!--                    var $ = layui.$;-->
+<!--                // })-->
+<!--                // layui.use('table', function(){-->
+<!--                //     var table = layui.table;-->
+
+<!--                    form.render('select');-->
+<!--                    table.render({-->
+<!--                        elem: '#test'-->
+<!--                        ,url:'/manager/viewExpertList'//数据请求路径-->
+<!--                        ,cols: [-->
+<!--                            [-->
+<!--                            {field:'name', width:80, title: '姓名', sort: true}-->
+<!--                            ,{field:'gender', width:80, title: '性别'}-->
+<!--                            ,{field:'company', width:80, title: '单位', sort: true}-->
+<!--                            ,{field:'title', width:80, title: '职位'}-->
+<!--                            ,{field:'areas', width:80, title: '擅长领域'}-->
+<!--                        ]-->
+<!--                        ]-->
+<!--                        ,page: true-->
+<!--                        ,limit: 10//默认10条数据一页-->
+<!--                        ,limits: [10,20,30,50] //数据分页条-->
+<!--                    });-->
+<!--                });-->
+<!--            </script>-->
+            <div id="expertList" style="padding: 15px;margin-left: 30px;"><!--这部分是专家列表的展示-->
+                <table class="layui-table" style="font-family: 隶书;font-size: 23px;" id="demo">
+                    <colgroup>
+                        <col width="100">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                        <col width="150">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>姓名</th>
+                            <th>性别</th>
+                            <th>单位</th>
+                            <th>职位</th>
+                            <th>擅长领域</th>
+                            <th>更多</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="expert:${expertList}">
+                            <td th:text="${expert.name}">姓名</td>
+                            <td th:text="${expert.gender}">性别</td>
+                            <td th:text="${expert.company}">单位</td>
+                            <td th:text="${expert.title}">职位</td>
+                            <td th:text="${expert.areas}">擅长领域</td>
+                            <td><a th:href="'/manager/viewExpert?name='+${expert.name}"><font color="#006400">详情</font></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
